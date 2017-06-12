@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">BeautifullPlanet</string>
+
+    <string name="app_name">Удивительная планета</string>
+    <string name="KanionAntilopi">Каньон Антилопы в Аризоне</string>
+
 </resources>

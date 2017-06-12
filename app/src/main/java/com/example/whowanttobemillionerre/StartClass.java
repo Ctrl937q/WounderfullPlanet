@@ -12,10 +12,7 @@ public class StartClass extends AppCompatActivity implements View.OnClickListene
 
     Button buttonStartGame;
     Button buttonNewGame;
-
     TextView textView;
-
-    boolean exit = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,7 +23,6 @@ public class StartClass extends AppCompatActivity implements View.OnClickListene
         textView = (TextView) findViewById(R.id.textView);
         buttonStartGame.setOnClickListener(this);
         buttonNewGame.setOnClickListener(this);
-
     }
 
     @Override
@@ -39,12 +35,6 @@ public class StartClass extends AppCompatActivity implements View.OnClickListene
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        onDestroy();
     }
 }
 

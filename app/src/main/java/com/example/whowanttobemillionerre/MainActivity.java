@@ -1,9 +1,13 @@
 package com.example.whowanttobemillionerre;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -29,7 +33,14 @@ public class MainActivity extends AppCompatActivity {
     final String ARRAY_CONST9 = "array_const9";
     final String ARRAY_CONST10 = "array_const10";
 
+    public static final String BUTTON_TEXT_1 = "button_text_1";
+    public static final String BUTTON_TEXT_2 = "button_text_2";
+    public static final String BUTTON_TEXT_3 = "button_text_3";
+    public static final String BUTTON_TEXT_4 = "button_text_4";
+    public static final String IMAGE_VIEW = "image_view";
+
     int counterMethod = 1;
+
     static int counterMethodNewGame = 2;
 
     static ArrayList<Integer> arrayListBool = new ArrayList<>();
@@ -66,10 +77,6 @@ public class MainActivity extends AppCompatActivity {
         arrayListBool.add(0);
         arrayListBool.add(0);
         arrayListBool.add(0);
-
-        if (getIntent().getBooleanExtra("EXIT", false)) {
-            finish();
-        }
 
         load();
         if (counterMethodNewGame == 3) {
@@ -110,9 +117,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void stage1() {
         counterMethod = 1;
-        anim = AnimationUtils.loadAnimation(this, R.anim.my_scale);
+        anim = AnimationUtils.loadAnimation(this, R.anim.my_alpha);
         imageView.startAnimation(anim);
-        imageView.setImageDrawable(getResources().getDrawable(R.drawable.image1));
+        imageView.setImageDrawable(getResources().getDrawable(R.drawable.image11));
         button1.setText("Деменовская ледяная пещера, Словакия");
         button2.setText("Ледяная пещера под ледником в Джуно, Аляска");
         button3.setText("Кунгуррская ледяная пещера,Сибирь");
@@ -123,7 +130,6 @@ public class MainActivity extends AppCompatActivity {
         button4.startAnimation(anim);
         linearLayoutImage.setBackground(getResources().getDrawable(R.drawable.fon1));
         linerLayoutFonButton.setBackground(getResources().getDrawable(R.drawable.fon1));
-        anim = AnimationUtils.loadAnimation(this, R.anim.my_scale);
         imageView.startAnimation(anim);
         button1.startAnimation(anim);
         button2.startAnimation(anim);
@@ -162,20 +168,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void stage2() {
         counterMethod = 2;
-        anim = AnimationUtils.loadAnimation(this, R.anim.my_scale);
+        anim = AnimationUtils.loadAnimation(this, R.anim.my_alpha);
         imageView.startAnimation(anim);
         imageView.setImageDrawable(getResources().getDrawable(R.drawable.kanionbig));
         button1.setText("Каньон Сумидеро, Мексика");
         button2.setText("Каньон Хейле Турзи, Румыния");
-        button3.setText("Большой каньон Ярлунг Цангпо, Тибет");
+        button3.setText("Большой каньон Ярлунг Цангпо");
         button4.setText("Большой Каньон в Аризоне, США");
         button1.startAnimation(anim);
         button2.startAnimation(anim);
         button3.startAnimation(anim);
         button4.startAnimation(anim);
-        linearLayoutImage.setBackground(getResources().getDrawable(R.drawable.fon2));
+        linearLayoutImage.setBackground(getResources().getDrawable(R.drawable.fon1));
         linerLayoutFonButton.setBackground(getResources().getDrawable(R.drawable.fon2));
-
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -187,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               arrayListBool.set(1, 0);
+                arrayListBool.set(1, 0);
                 stage3();
             }
         });
@@ -209,20 +214,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void stage3() {
         counterMethod = 3;
-        anim = AnimationUtils.loadAnimation(this, R.anim.my_trans);
+        anim = AnimationUtils.loadAnimation(this, R.anim.my_alpha);
         imageView.startAnimation(anim);
         imageView.setImageDrawable(getResources().getDrawable(R.drawable.pesheri));
-        button1.setText("Мраморные пещеры в Патагонии, на стыке Аргентины и Чили");
+        button1.setText("Мраморные пещеры в Патагонии");
         button2.setText("Пещеры Глоуворм, Новая Зеландия");
         button3.setText("Ледниковая пещера Менденхол, США");
-        button4.setText("Пещера Фингала на оострове Саффа, Шотландии,");
+        button4.setText("Пещера Фингала на острове Саффа, Шотландии,");
         button1.startAnimation(anim);
         button2.startAnimation(anim);
         button3.startAnimation(anim);
         button4.startAnimation(anim);
         linearLayoutImage.setBackground(getResources().getDrawable(R.drawable.fon3));
         linerLayoutFonButton.setBackground(getResources().getDrawable(R.drawable.fon3));
-
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -261,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
         imageView.setImageDrawable(getResources().getDrawable(R.drawable.dira));
         button1.setText("Ик-Киль, Мексика");
         button2.setText("Голубая дыра Дина, Багамы");
-        button3.setText("Большая голубая Дыра, Белиз ,Центральная Америка");
+        button3.setText("Большая голубая Дыра, Белиз");
         button4.setText("Озеро Утренней Славы, США");
         button1.startAnimation(anim);
         button2.startAnimation(anim);
@@ -302,20 +306,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void stage5() {
         counterMethod = 5;
-        anim = AnimationUtils.loadAnimation(this, R.anim.my_scale);
+        anim = AnimationUtils.loadAnimation(this, R.anim.my_alpha);
         imageView.startAnimation(anim);
         imageView.setImageDrawable(getResources().getDrawable(R.drawable.kanion));
         button1.setText("Каньон Антилопы в Аризоне, США");
-        button2.setText("Каньон Брайс, Юта, США");
+        button2.setText("Национальный парк Каньон Брайс, США");
         button3.setText("Ущелье Кали-Гандаки, Непал");
-        button4.setText("Каньон Фиаргурфуй, Исландия");
+        button4.setText("Каньон Фиаргурфуй,Исландия");
         button1.startAnimation(anim);
         button2.startAnimation(anim);
         button3.startAnimation(anim);
         button4.startAnimation(anim);
         linearLayoutImage.setBackground(getResources().getDrawable(R.drawable.fon5));
         linerLayoutFonButton.setBackground(getResources().getDrawable(R.drawable.fon5));
-
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -349,11 +352,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void stage6() {
         counterMethod = 6;
-        anim = AnimationUtils.loadAnimation(this, R.anim.my_trans);
+        anim = AnimationUtils.loadAnimation(this, R.anim.my_alpha);
         imageView.startAnimation(anim);
         imageView.setImageDrawable(getResources().getDrawable(R.drawable.vodopad));
         button1.setText("Водопад Новый Навахо, Аризона, США");
-        button2.setText("Водопад Марморе (Мраморный водопад), Умбрия, Италия");
+        button2.setText("Водопад Марморе, Умбрия, Италия");
         button3.setText("Водопад Нурананг, Таванг, Индия");
         button4.setText("Водопад Виктория на стыке Зимбабве и Замбии");
         button1.startAnimation(anim);
@@ -362,7 +365,6 @@ public class MainActivity extends AppCompatActivity {
         button4.startAnimation(anim);
         linearLayoutImage.setBackground(getResources().getDrawable(R.drawable.fon6));
         linerLayoutFonButton.setBackground(getResources().getDrawable(R.drawable.fon6));
-
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -410,7 +412,6 @@ public class MainActivity extends AppCompatActivity {
         linearLayoutImage.setBackground(getResources().getDrawable(R.drawable.fon7));
         linerLayoutFonButton.setBackground(getResources().getDrawable(R.drawable.fon7));
 
-
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -444,7 +445,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void stage8() {
         counterMethod = 8;
-        anim = AnimationUtils.loadAnimation(this, R.anim.my_scale);
+        anim = AnimationUtils.loadAnimation(this, R.anim.my_alpha);
         imageView.startAnimation(anim);
         imageView.setImageDrawable(getResources().getDrawable(R.drawable.yaponiya));
         button1.setText("Национальный парк Хитачи, Япония");
@@ -457,7 +458,6 @@ public class MainActivity extends AppCompatActivity {
         button4.startAnimation(anim);
         linearLayoutImage.setBackground(getResources().getDrawable(R.drawable.fon8));
         linerLayoutFonButton.setBackground(getResources().getDrawable(R.drawable.fon8));
-
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -491,20 +491,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void stage9() {
         counterMethod = 9;
-        anim = AnimationUtils.loadAnimation(this, R.anim.my_trans);
+        anim = AnimationUtils.loadAnimation(this, R.anim.my_alpha);
         imageView.startAnimation(anim);
         imageView.setImageDrawable(getResources().getDrawable(R.drawable.svetnieskali));
         button1.setText("Скалы Бунда, Австралия");
         button2.setText("Пылающие скалы , Монголия");
         button3.setText("Красные скалы, Невада, США");
-        button4.setText("Цветные скалы Чжанъе Данксиа, Китай");
+        button4.setText("Цветные скалы Чжанъе Данксиа");
         button1.startAnimation(anim);
         button2.startAnimation(anim);
         button3.startAnimation(anim);
         button4.startAnimation(anim);
         linearLayoutImage.setBackground(getResources().getDrawable(R.drawable.fon9));
         linerLayoutFonButton.setBackground(getResources().getDrawable(R.drawable.fon9));
-
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -544,7 +543,7 @@ public class MainActivity extends AppCompatActivity {
         button1.setText("Водосточный колодец Дайсетта");
         button2.setText("Заколдованный колодец, Бразилия");
         button3.setText("Водосточный колодец Макунджи");
-        button4.setText("Колодец Тора, мыс Перпетуа, штат Орегон");
+        button4.setText("Колодец Тора, штат Орегон");
         button1.startAnimation(anim);
         button2.startAnimation(anim);
         button3.startAnimation(anim);
@@ -568,6 +567,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -585,6 +585,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private void save() {
         sharedPreferences = getPreferences(MODE_PRIVATE);
@@ -620,11 +621,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        save();
+        Intent intent = new Intent(MainActivity.this, StartClass.class);
+        startActivity(intent);
+        super.onBackPressed();
+    }
+
+    @Override
     protected void onStop() {
         save();
         super.onStop();
     }
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        // outState.putInt(IMAGE_VIEW, imageView.getDrawable());
+        outState.putString(BUTTON_TEXT_1, button1.getText().toString());
+        outState.putString(BUTTON_TEXT_2, button2.getText().toString());
+        outState.putString(BUTTON_TEXT_3, button3.getText().toString());
+        outState.putString(BUTTON_TEXT_4, button4.getText().toString());
+    }
 }
-
-
-

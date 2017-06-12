@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/image"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -18,11 +18,55 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".Peshera">
 
         </activity>
 
         <activity android:name=".Result">
+
+        </activity>
+
+        <activity android:name=".MainActivity">
+
+        </activity>
+
+        <activity android:name=".Kanion">
+
+        </activity>
+
+        <activity android:name=".LearMore">
+
+        </activity>
+
+        <activity android:name=".KanionAntilopi">
+
+        </activity>
+
+        <activity android:name=".Kolodec">
+
+        </activity>
+
+        <activity android:name=".FingalovaPeshera">
+
+        </activity>
+
+        <activity android:name=".Skali">
+
+        </activity>
+
+        <activity android:name=".Dira">
+
+        </activity>
+
+        <activity android:name=".Victoria">
+
+        </activity>
+
+        <activity android:name=".Pesheri">
+
+        </activity>
+
+        <activity android:name=".Yaponia">
 
         </activity>
 
